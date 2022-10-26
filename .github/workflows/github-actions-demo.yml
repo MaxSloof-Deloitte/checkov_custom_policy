@@ -1,0 +1,21 @@
+name: Checkov
+on:
+  push:
+    branches:
+      - demo
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: demo
+      - name: Checkov Github Action
+        id: checkov
+        uses: bridgecrewio/checkov-action@v12.1347.0
+        with:
+          directory: cdk.out
+          external_checks_dirs: custom_policy
+          compact: true
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v3
