@@ -1,6 +1,6 @@
 name: Checkov
 on:
-  push:
+  workflow_call:
     branches:
       - main
 jobs:
