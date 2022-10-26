@@ -1,8 +1,7 @@
 name: Checkov
 on:
   workflow_call:
-    branches:
-      - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,5 +17,3 @@ jobs:
           external_checks_dirs: custom_policy
           compact: true
           soft_fail: true
-      - name: Download all workflow run artifacts
-        uses: actions/download-artifact@v3
