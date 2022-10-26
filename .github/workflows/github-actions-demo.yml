@@ -6,8 +6,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: print repo
-        run: echo ${{ github.action_repository }}/.checkov.yml
       - uses: actions/checkout@v3
         with:
           ref: demo
@@ -16,4 +14,4 @@ jobs:
         uses: bridgecrewio/checkov-action@v12.1347.0
         with:
           directory: cdk.out
-          config_file: ${{ github.action_repository }}/.checkov.yml
+          config_file: https://github.com/MaxSloof-Deloitte/checkov_custom_policy/blob/main/.checkov.yml
