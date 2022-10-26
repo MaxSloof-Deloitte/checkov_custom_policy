@@ -2,7 +2,7 @@ name: Checkov
 on:
   push:
     branches:
-      - demo
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,5 +17,6 @@ jobs:
           directory: cdk.out
           external_checks_dirs: custom_policy
           compact: true
+          soft_fail: true
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v3
