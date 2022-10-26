@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: demo
+          ref: main
       - name: Checkov Github Action
         id: checkov
         uses: bridgecrewio/checkov-action@v12.1347.0
