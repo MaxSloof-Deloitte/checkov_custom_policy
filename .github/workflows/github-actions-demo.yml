@@ -14,6 +14,6 @@ jobs:
         uses: bridgecrewio/checkov-action@v12.1347.0
         with:
           directory: cdk.out
-          soft-fail: true
-          external-checks-git: https://github.com/MaxSloof-Deloitte/checkov_custom_policy//custom_policies
-          skip-check: CKV_AWS_21
+          soft_fail: true
+          external_checks_repos: https://github.com/MaxSloof-Deloitte/checkov_custom_policy//custom_policies
+          skip_check: CKV_AWS_21
