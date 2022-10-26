@@ -6,6 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - run: ${{ github.action_repository }}/.checkov.yml
       - uses: actions/checkout@v3
         with:
           ref: demo
