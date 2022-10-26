@@ -14,6 +14,6 @@ jobs:
         uses: bridgecrewio/checkov-action@v12.1347.0
         with:
           directory: cdk.out
-          external_checks_dirs: custom_policy.py
+          external_checks_dirs: custom_policies
           compact: true
           soft_fail: true
