@@ -14,4 +14,4 @@ jobs:
         uses: bridgecrewio/checkov-action@v12.1347.0
         with:
           directory: cdk.out
-          config_file: .checkov.yml
+          config_file: MaxSloof-Deloitte/checkov_custom_policy/.checkov.yml
