@@ -12,3 +12,6 @@ jobs:
         uses: bridgecrewio/checkov-action@v12.1347.0
         with:
           directory: cdk.out
+          soft_fail: true
+          external_checks_repos: ${{ github.repository_owner }}/checkov_custom_policy/custom_policies@main
+          skip_check: CKV_AWS_54
