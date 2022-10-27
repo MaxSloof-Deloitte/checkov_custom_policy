@@ -9,11 +9,15 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
+      - uses: actions/download-artifact@v3
+        with:
+          path: ~/templates/cdk_templates
       - name: Checkov Github Action
         id: checkov
         uses: bridgecrewio/checkov-action@v12.1636.0
         with:
-          directory: cdk.out
+          directory: ~/templates/cdk_templates
           soft_fail: true
           external_checks_repos: https://github.com/MaxSloof-Deloitte/checkov_github_action//custom_policies
           skip_check: CKV_AWS_54
+          compact: true
