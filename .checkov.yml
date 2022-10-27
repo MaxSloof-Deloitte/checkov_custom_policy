@@ -1,6 +1,4 @@
 skip-check:
   - CKV_AWS_21
-soft-fail: true
 external-checks-dir:
   - custom_policies
-compact: true
