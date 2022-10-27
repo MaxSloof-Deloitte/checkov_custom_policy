@@ -21,5 +21,5 @@ jobs:
         with:
           directory: cdk.out
           soft_fail: true
-          external_checks_dirs: ${{ GITHUB_WORKSPACE }}/custom_policies
+          external_checks_dirs: ${{ github.workspace }}/custom_policies
           skip_check: CKV_AWS_54
