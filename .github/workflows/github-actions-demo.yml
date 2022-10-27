@@ -18,7 +18,7 @@ jobs:
         id: checkov
         uses: bridgecrewio/checkov-action@v12.1636.0
         with:
-          directory: ~/home/runner/work/aws-demo-ts/aws-demo-ts/cdk.out
+          directory: ${{ github.workspace }}/cdk.out
           soft_fail: true
           external_checks_dirs: ~/home/runner/work/aws-demo-ts/aws-demo-ts/custom_policies
           skip_check: CKV_AWS_54
