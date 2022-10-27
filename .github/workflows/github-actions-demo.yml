@@ -13,5 +13,5 @@ jobs:
         with:
           directory: cdk.out
           soft_fail: true
-          external_checks_repos: MaxSloof-Deloitte/custom_policies
+          external_checks_repos: MaxSloof-Deloitte/custom_policies@main
           skip_check: CKV_AWS_54
