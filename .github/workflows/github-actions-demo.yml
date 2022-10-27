@@ -11,6 +11,7 @@ jobs:
 
       - uses: actions/download-artifact@v3
         with:
+          name: cdk-templates
           path: ~/templates/cdk_templates
       - name: Checkov Github Action
         id: checkov
