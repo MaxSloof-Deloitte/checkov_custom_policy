@@ -12,7 +12,7 @@ jobs:
       - name: custom policies
         uses: actions/checkout@v3
         with:
-          repository: maxsloof-deloitte/checkov_github_action
+          repository: maxsloof-deloitte/checkov_github_action@main
           path: custom_policies
 
       - name: Checkov Github Action
