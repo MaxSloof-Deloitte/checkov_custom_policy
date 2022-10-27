@@ -13,5 +13,5 @@ jobs:
         with:
           directory: cdk.out
           soft_fail: true
-          skip_check: CKV_AWS_54
           config_file: https://raw.githubusercontent.com/MaxSloof-Deloitte/checkov_custom_policy/main/.checkov.yml
+          skip_check: CKV_AWS_54
