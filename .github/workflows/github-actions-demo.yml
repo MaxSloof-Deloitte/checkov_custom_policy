@@ -16,7 +16,7 @@ jobs:
 
       - name: Checkov Github Action
         id: checkov
-        uses: bridgecrewio/checkov-action@v10
+        uses: bridgecrewio/checkov-action@v12.1817.0
         with:
           directory: cdk.out
           soft_fail: true
