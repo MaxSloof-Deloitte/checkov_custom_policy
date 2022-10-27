@@ -13,12 +13,13 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: maxsloof-deloitte/checkov_github_action
+          path: external_custom_policies
 
       - name: Checkov Github Action
         id: checkov
         uses: bridgecrewio/checkov-action@v12.1636.0
         with:
-          directory: ${{ github.repository }}/cdk.out
+          directory: cdk.out
           soft_fail: true
-          external_checks_dirs: ~/home/runner/work/aws-demo-ts/aws-demo-ts/custom_policies
+          external_checks_dirs: ~/home/runner/work/aws-demo-ts/aws-demo-ts/external_custom_policies
           skip_check: CKV_AWS_54
