@@ -17,3 +17,11 @@ class SecurityGroupUnrestrictedIngress443(AbsSecurityGroupUnrestrictedIngress):
 
 
 check = SecurityGroupUnrestrictedIngress443()
+
+
+class SecurityGroupUnrestrictedIngressALL(AbsSecurityGroupUnrestrictedIngress):
+    def __init__(self):
+        super().__init__(check_id="CKV_AWS_MAX_ALL", port="*")
+
+
+check = SecurityGroupUnrestrictedIngressALL()
