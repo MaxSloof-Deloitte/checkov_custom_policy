@@ -1,4 +1,0 @@
-skip-check:
-  - CKV_AWS_21
-external-checks-dir:
-  - custom_policies
