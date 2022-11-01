@@ -26,3 +26,7 @@ jobs:
           # hard_fail_on:
           # output_format: json
           # output_file_path: output/
+      - uses: actions/upload-artifact@v3
+        with:
+          name: checkov-output
+          path: output
