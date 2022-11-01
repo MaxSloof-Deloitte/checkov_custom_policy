@@ -31,5 +31,5 @@ jobs:
           ls ${{ github.workspace }}
       - uses: actions/upload-artifact@v3
         with:
-          name: results.sarif
-          path: ""
+          name: checkov-output
+          path: results.sarif
