@@ -28,5 +28,4 @@ jobs:
           # output_file_path: output/
       - uses: actions/upload-artifact@v3
         with:
-          name: checkov-output
-          path: output
+          name: results.sarif
