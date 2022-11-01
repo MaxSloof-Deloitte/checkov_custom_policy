@@ -19,7 +19,7 @@ jobs:
         with:
           directory: /home/runner/work/aws-demo-ts-git-action/aws-demo-ts-git-action/cdk.out
           external_checks_repos: https://github.com/MaxSloof-Deloitte/checkov_github_action//custom_policies
-          soft_fail: true
+          #soft_fail: true
           skip_check: CKV_AWS_54
           compact: true
           # output_format: json
