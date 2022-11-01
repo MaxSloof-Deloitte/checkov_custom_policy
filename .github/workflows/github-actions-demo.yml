@@ -26,9 +26,6 @@ jobs:
           # soft_fail_on:
           # hard_fail_on:
           # output_file_path: output/
-      - name: List files in repo
-        run: |
-          ls ${{ github.workspace }}
       - uses: actions/upload-artifact@v3
         with:
           name: checkov-output
