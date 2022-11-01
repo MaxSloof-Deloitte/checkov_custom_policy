@@ -26,7 +26,9 @@ jobs:
           # hard_fail_on:
           # output_format: json
           # output_file_path: output/
+      - name: List files in repo
+        run: ls ${{ github.workspace }}
       - uses: actions/upload-artifact@v3
         with:
           name: results.sarif
-          path: results.sarif
+          path: ""
