@@ -21,7 +21,8 @@ check = SecurityGroupUnrestrictedIngress443()
 
 class SecurityGroupUnrestrictedIngress2222(AbsSecurityGroupUnrestrictedIngress):
     def __init__(self):
-        super().__init__(check_id="CKV_AWS_MAX3", port=2222)
+        for ip in [2222, 25]:
+            super().__init__(check_id=f"CKV_AWS_MAX{ip}", port=ip)
 
 
 check = SecurityGroupUnrestrictedIngress2222()
