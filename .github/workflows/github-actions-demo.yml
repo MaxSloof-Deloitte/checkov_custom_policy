@@ -26,7 +26,8 @@ jobs:
           # soft_fail_on:
           # hard_fail_on:
           # output_file_path: output/
-      - uses: actions/upload-artifact@v3
+      - name: Upload the Checkov output file
+        uses: actions/upload-artifact@v3
         with:
           name: checkov-output
           path: results.sarif
