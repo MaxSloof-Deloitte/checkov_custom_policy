@@ -1,0 +1,2 @@
+PolicyCode, Description, Location
+CUSTOM_AWS_NET1, Ensure no security groups allow ingress from 0.0.0.0:0 to any port, sg_unrestrict_all.py
