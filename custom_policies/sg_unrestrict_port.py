@@ -10,5 +10,5 @@ class SecurityGroupUnrestrictedIngressAny(AbsSecurityGroupUnrestrictedIngress):
 
 for port in [23, 80, 443, 2222]:
     SecurityGroupUnrestrictedIngressAny(
-        check_id=f"CKV_AWS_CUSTOM_PORT{port}", test_port=port
+        check_id=f"CUSTOM_AWS_NET{port}", test_port=port
     )

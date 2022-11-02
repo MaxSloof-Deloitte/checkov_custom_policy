@@ -56,9 +56,4 @@ class AllSecurityGroupUnrestrictedIngress(BaseResourceCheck):
         return CheckResult.PASSED
 
 
-class SecurityGroupUnrestrictedIngressAll(AllSecurityGroupUnrestrictedIngress):
-    def __init__(self, check_id):
-        super().__init__(check_id)
-
-
-SecurityGroupUnrestrictedIngressAll("CUSTOM_AWS_NET1")
+AllSecurityGroupUnrestrictedIngress("CUSTOM_AWS_NET1")
