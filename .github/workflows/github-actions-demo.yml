@@ -26,6 +26,7 @@ jobs:
           # soft_fail_on: CKV_AWS_18, CKV_AWS_55
           # hard_fail_on:
           # output_file_path: output/
+          # quiet: true
       - name: Upload the Checkov output file
         uses: actions/upload-artifact@v3
         with:
