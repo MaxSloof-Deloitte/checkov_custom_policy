@@ -1,2 +1,4 @@
 PolicyCode, Description, Location
 CUSTOM_AWS_NET1, Ensure no security groups allow ingress from 0.0.0.0:0 to any port, sg_unrestrict_all.py
+CUSTOM_AWS_NET_NACL22, Ensure no Network ACLs allow ingress from 0.0.0.0:0 to port 22, nacl_unrestrict_port.py
+CUSTOM_AWS_NET_NACL3389. Ensure no Network ACLs allow ingress from 0.0.0.0:0 to port 3389, nacl_unrestrict_port.py
