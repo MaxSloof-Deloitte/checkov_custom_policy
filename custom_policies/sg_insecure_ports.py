@@ -8,14 +8,14 @@ The ALLSecurityGroupUnrestrictedIngress returns FAIL when any port allows 0.0.0.
 """
 
 
-class AllSecurityGroupUnrestrictedIngress(BaseResourceCheck):
-    def __init__(self, check_id):
-        name = "Ensure no security groups allow any ingress to any port 20, 21, 23, and 80"
+class MultiplePortsAnyIngressSecurityGroup(BaseResourceCheck):
+    def __init__(self, check_id, port_list):
+        name = f"Ensure no security groups allow any ingress to any insecure ports ({', '.join(str(port)for port in port_list)})"
         supported_resources = [
             "AWS::EC2::SecurityGroup",
             "AWS::EC2::SecurityGroupIngress",
         ]
-        self.insecure_ports = [20,21,23,80]
+        self.port_list = port_list
         categories = [CheckCategories.NETWORKING]
         super().__init__(
             name=name,
@@ -44,9 +44,12 @@ class AllSecurityGroupUnrestrictedIngress(BaseResourceCheck):
                 if isinstance(rule["FromPort"], int) and isinstance(
                     rule["ToPort"], int
                 ):
-                    if int(rule["FromPort"]) == int(rule["ToPort"]) and int(rule["FromPort"]) in self.insecure_ports:
+                    if (
+                        int(rule["FromPort"]) == int(rule["ToPort"])
+                        and int(rule["FromPort"]) in self.port_list
+                    ):
                         return CheckResult.FAILED
         return CheckResult.PASSED
 
 
-AllSecurityGroupUnrestrictedIngress("CUSTOM_AWS_NET1")
+MultiplePortsAnyIngressSecurityGroup("CUSTOM_AWS_NET1", port_list=[20, 21, 23, 80])
