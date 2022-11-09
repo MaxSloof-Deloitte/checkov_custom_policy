@@ -10,11 +10,12 @@ The ALLSecurityGroupUnrestrictedIngress returns FAIL when any port allows 0.0.0.
 
 class AllSecurityGroupUnrestrictedIngress(BaseResourceCheck):
     def __init__(self, check_id):
-        name = "Ensure no security groups allow ingress from 0.0.0.0:0 to any port"
+        name = "Ensure no security groups allow any ingress to any port 20, 21, 23, and 80"
         supported_resources = [
             "AWS::EC2::SecurityGroup",
             "AWS::EC2::SecurityGroupIngress",
         ]
+        self.insecure_ports = [20,21,23,80]
         categories = [CheckCategories.NETWORKING]
         super().__init__(
             name=name,
@@ -43,16 +44,8 @@ class AllSecurityGroupUnrestrictedIngress(BaseResourceCheck):
                 if isinstance(rule["FromPort"], int) and isinstance(
                     rule["ToPort"], int
                 ):
-                    if int(rule["FromPort"]) == int(rule["ToPort"]):
-                        if (
-                            "CidrIp" in rule.keys() and rule["CidrIp"] == "0.0.0.0/0"
-                        ):  # nosec  # nosec
-                            return CheckResult.FAILED
-                        elif "CidrIpv6" in rule.keys() and rule["CidrIpv6"] in [
-                            "::/0",
-                            "0000:0000:0000:0000:0000:0000:0000:0000/0",
-                        ]:
-                            return CheckResult.FAILED
+                    if int(rule["FromPort"]) == int(rule["ToPort"]) and int(rule["FromPort"]) in self.insecure_ports:
+                        return CheckResult.FAILED
         return CheckResult.PASSED
 
 
