@@ -7,8 +7,8 @@ with open(env_file, "r") as file:
     print(type(f))
     print(f)
 
-# t1 = os.getenv()
-# print(t1)
+t1 = os.getenv("reponame")
+print("t1" + t1)
 
-t2 = os.environ("${{ GITHUB_WORKSPACE }}")
-print(t2)
+t2 = os.environ("reponame")
+print("t2" + t2)
