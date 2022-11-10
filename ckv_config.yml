@@ -1,0 +1,3 @@
+soft-fail: true
+skip-check:
+  - CKV_AWS_260
