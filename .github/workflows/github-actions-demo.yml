@@ -32,4 +32,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: checkov-output
-          path: results.sarif
+          output_format: json
+      - name: PUT the output JSON file to an S3 bucket
+        run: |
+          curl -X PUT https://iw6zajcn6i.execute-api.eu-central-1.amazonaws.com/tst/apigwdemo-max-2022/${{ github.repository }}.json -H "Content-Type: application/json" -d @${{ github.workspace}}/results_json.json
