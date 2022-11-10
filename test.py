@@ -1,5 +1,7 @@
 import os
 
 env_file = os.getenv("GITHUB_ENV")
-print(type(env_file))
-print("\n" + env_file)
+
+with open(env_file, "r") as file:
+    print(type(file))
+    print("\n" + file)
