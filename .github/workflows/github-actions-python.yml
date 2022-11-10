@@ -1,0 +1,44 @@
+name: Checkov
+on:
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      repo_complete: ${{ github.repository }}
+      workspace_path: ${{ github.workspace }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: cdk-templates
+          path: cdk.out
+      - name: Checkov Github Action
+        id: checkov
+        uses: bridgecrewio/checkov-action@v12.1636.0
+        with:
+          directory: ${{ github.workspace }}/cdk.out
+          external_checks_repos: https://github.com/MaxSloof-Deloitte/checkov_github_action//custom_policies
+          soft_fail: true
+          skip_check: CKV_AWS_54
+          compact: true
+          output_format: json
+          # soft_fail_on: CKV_AWS_18, CKV_AWS_55
+          # hard_fail_on:
+          output_file_path: results_json.json
+          # quiet: true
+      - name: Upload the Checkov output file
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: checkov-output
+          path: results_json.json
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+      - name: Print GITHUB ENV
+        run: python test.py

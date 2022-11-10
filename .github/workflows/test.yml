@@ -4,7 +4,7 @@ jobs:
   test_job:
     runs-on: ubuntu-latest
     env:
-      reponame: ${{ github.repository }}
+      repo_complete: ${{ github.repository }}
       workspace_path: ${{ github.workspace }}
     steps:
       - name: Save ENV file
