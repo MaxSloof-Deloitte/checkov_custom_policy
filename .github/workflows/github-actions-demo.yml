@@ -33,7 +33,10 @@ jobs:
         with:
           name: checkov-output
           path: results_json.json
-
+      - name: Save repo name and workspace path to env variables
+        run: |
+          echo "reponame=${{ github.repository }}" >> $GITHUB_ENV
+          echo "workspace_path=${{ github.workspace }}" >> $GITHUB_ENV
       - name: PUT the output JSON file to an S3 bucket
         run: |
           curl -X PUT https://iw6zajcn6i.execute-api.eu-central-1.amazonaws.com/tst/apigwdemo-max-2022/${{ github.repository }}.json -H "Content-Type: application/json" -d @${{ github.workspace }}/results_json.json
