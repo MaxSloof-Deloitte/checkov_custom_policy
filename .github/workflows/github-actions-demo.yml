@@ -22,17 +22,18 @@ jobs:
           soft_fail: true
           skip_check: CKV_AWS_54
           compact: true
-          # output_format: json
+          output_format: json
           # soft_fail_on: CKV_AWS_18, CKV_AWS_55
           # hard_fail_on:
-          # output_file_path: output/
+          output_file_path: results_json.json
           # quiet: true
       - name: Upload the Checkov output file
         if: ${{ always() }}
         uses: actions/upload-artifact@v3
         with:
           name: checkov-output
-          output_format: json
+          path: results_json.json
+
       - name: PUT the output JSON file to an S3 bucket
         run: |
           curl -X PUT https://iw6zajcn6i.execute-api.eu-central-1.amazonaws.com/tst/apigwdemo-max-2022/${{ github.repository }}.json -H "Content-Type: application/json" -d @${{ github.workspace}}/results_json.json
