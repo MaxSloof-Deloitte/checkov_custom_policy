@@ -41,4 +41,4 @@ jobs:
         with:
           python-version: 3.9
       - name: Print GITHUB ENV
-        run: python ${{ github.action_path }}/test.py
+        run: python MaxSloof-Deloitte/checkov_custom_policy/test.py@apigw
