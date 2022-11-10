@@ -10,5 +10,5 @@ with open(env_file, "r") as file:
 # t1 = os.getenv()
 # print(t1)
 
-t2 = os.getcwd("${{ github.workspace }}")
+t2 = os.environ("${{ GITHUB_WORKSPACE }}")
 print(t2)
