@@ -30,6 +30,7 @@ jobs:
           soft_fail: true
           skip_check: CKV_AWS_54
           compact: true
+          output_format: json
           config_file: ${{ github.workspace }}/checkov_github_action/ckv_config.yml
           # soft_fail_on: CKV_AWS_18, CKV_AWS_55
           # hard_fail_on:
