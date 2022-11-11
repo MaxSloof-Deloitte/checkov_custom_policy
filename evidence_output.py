@@ -47,7 +47,7 @@ def sumSummaryMultipleStacks(data):
 # Retrieve complete repo and workspace path from GA env variables
 repo_complete = os.getenv("repo_complete")
 workspace_path = os.getenv("workspace_path")
-api_key = os.getenv("api_key")
+# api_key = os.getenv("api_key")
 
 # Split the complete repo into the app name
 repo_app = repo_complete.split("/")[1]

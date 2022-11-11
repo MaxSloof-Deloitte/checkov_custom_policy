@@ -29,7 +29,6 @@ jobs:
           output_format: json
           # soft_fail_on: CKV_AWS_18, CKV_AWS_55
           # hard_fail_on:
-          output_file_path: results_json.json
           # quiet: true
       - name: Upload the Checkov output file
         if: ${{ always() }}
