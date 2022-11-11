@@ -3,7 +3,7 @@ on:
   workflow_call:
     secrets:
       APIGW_KEY:
-        required: false
+        required: true
 
 jobs:
   build:
