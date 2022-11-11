@@ -94,7 +94,7 @@ with open(dir, "r") as j:
             "resource_count": raw_sum["resource_count"],
         }
 
-
+# Outline for the JSON file
 dictionary = {
     "Status GitHub Repository": "Deployed",
     "Checkov Summary": summary,
