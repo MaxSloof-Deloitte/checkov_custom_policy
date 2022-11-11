@@ -8,7 +8,7 @@ jobs:
     env:
       repo_complete: ${{ github.repository }}
       workspace_path: ${{ github.workspace }}
-      api_key: ${{ secrets.APIGW_KEY }}
+      # api_key: ${{ secrets.APIGW_KEY }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
