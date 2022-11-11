@@ -40,6 +40,9 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 3.9
-      - uses: MaxSloof-Deloitte/checkov_custom_policy@apigw
+      - uses: actions/checkout@v3
+        with:
+          path: checkov_custom_policy
+          repository: MaxSloof-Deloitte/checkov_custom_policy@apigw
       - name: Print GITHUB ENV
-        run: python MaxSloof-Deloitte/checkov_custom_policy/test.py
+        run: python ${{ github.workspace }}/checkov_custom_policy/test.py
