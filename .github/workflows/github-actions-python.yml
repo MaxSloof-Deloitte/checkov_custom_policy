@@ -45,6 +45,6 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 3.9
-      - run: pip3 install -r ${{ github.workspace }}/py_requirements.txt
+      - run: pip3 install -r ${{ github.workspace }}/checkov_custom_policy/py_requirements.txt
       - name: Print GITHUB ENV
         run: python ${{ github.workspace }}/checkov_custom_policy/test.py
