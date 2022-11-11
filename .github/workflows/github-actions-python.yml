@@ -46,5 +46,5 @@ jobs:
         with:
           python-version: 3.9
       - run: pip3 install -r ${{ github.workspace }}/checkov_custom_policy/py_requirements.txt
-      - name: Format Checkov output and send evidence
+      - name: Print GITHUB ENV
         run: python ${{ github.workspace }}/checkov_custom_policy/evidence_output.py
