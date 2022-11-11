@@ -1,3 +1,5 @@
 soft-fail: true
 skip-check:
   - CKV_AWS_260
+output: json
+output-file-path: ./results_json.json
