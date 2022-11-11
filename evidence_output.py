@@ -60,7 +60,9 @@ arr_summary = []
 with open(dir, "r") as j:
     f = json.loads(j.read())
 
-    if type(f) is list:  # Happens when multiple stacks are synth.
+    if (
+        type(f) is list
+    ):  # Happens when multiple offerings are checked (CloudFormation and Hard-coded secrets).
         temp_summary = []
 
         for i in range(len(f)):  # For every stack:
@@ -76,7 +78,7 @@ with open(dir, "r") as j:
         # Sum all summary figures
         summary = sumSummaryMultipleStacks(temp_summary)
 
-    elif type(f) is dict:  # Only one stack is synth.
+    elif type(f) is dict:  # Only CloudFormation are checked.
 
         # Retrieve all the failed checks for evidence collection
         failed_checks = f["results"]["failed_checks"]
@@ -84,11 +86,17 @@ with open(dir, "r") as j:
         extractInfoChecks(failed_checks)
 
         # Save summary figures
-        summary = f["summary"]
+        raw_sum = f["summary"]
+        summary = {
+            "passed": raw_sum["passed"],
+            "failed": raw_sum["failed"],
+            "skipped": raw_sum["skipped"],
+            "resource_count": raw_sum["resource_count"],
+        }
 
 
 dictionary = {
-    "Status": "Deployed",
+    "Status GitHub Repository": "Deployed",
     "Checkov Summary": summary,
     "Failed Checks": arr_checks,
 }
