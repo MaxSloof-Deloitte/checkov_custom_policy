@@ -38,13 +38,13 @@ jobs:
           path: results_json.json
       - uses: actions/checkout@v3
         with:
-          repository: MaxSloof-Deloitte/checkov_custom_policy
+          repository: MaxSloof-Deloitte/checkov_github_action
           ref: apigw
-          path: checkov_custom_policy
+          path: checkov_github_action
       - name: Install Python
         uses: actions/setup-python@v4
         with:
           python-version: 3.9
-      - run: pip3 install -r ${{ github.workspace }}/checkov_custom_policy/py_requirements.txt
+      - run: pip3 install -r ${{ github.workspace }}/checkov_github_action/py_requirements.txt
       - name: Print GITHUB ENV
-        run: python ${{ github.workspace }}/checkov_custom_policy/evidence_output.py
+        run: python ${{ github.workspace }}/checkov_github_action/evidence_output.py
