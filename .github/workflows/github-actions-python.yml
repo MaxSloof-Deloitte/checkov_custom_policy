@@ -18,7 +18,7 @@ jobs:
           path: cdk.out
       - name: Checkov Github Action
         id: checkov
-        uses: bridgecrewio/checkov-action@v12.1636.0
+        uses: bridgecrewio/checkov-action@v12.1844.0
         with:
           directory: ${{ github.workspace }}/cdk.out
           external_checks_repos: https://github.com/MaxSloof-Deloitte/checkov_github_action//custom_policies
@@ -26,7 +26,7 @@ jobs:
           skip_check: CKV_AWS_54
           compact: true
           output_format: json
-          output_file_path: results_json.json
+          output_file_path: ./results_json.json
           # soft_fail_on: CKV_AWS_18, CKV_AWS_55
           # hard_fail_on:
           # quiet: true
