@@ -16,5 +16,5 @@ headers = {"Content-Type": "application/json"}
 r = requests.put(
     f"https://iw6zajcn6i.execute-api.eu-central-1.amazonaws.com/tst/apigwdemo-max-2022/{repo_app}.json",
     headers=headers,
-    data=dir,
+    data=open(dir, "rb"),
 )

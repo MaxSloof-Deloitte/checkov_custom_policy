@@ -42,8 +42,8 @@ jobs:
           python-version: 3.9
       - uses: actions/checkout@v3
         with:
-          path: checkov_custom_policy
           repository: MaxSloof-Deloitte/checkov_custom_policy
           ref: apigw
+          path: checkov_custom_policy
       - name: Print GITHUB ENV
         run: python ${{ github.workspace }}/checkov_custom_policy/test.py
