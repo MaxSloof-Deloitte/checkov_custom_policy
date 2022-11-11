@@ -8,7 +8,6 @@ jobs:
     env:
       repo_complete: ${{ github.repository }}
       workspace_path: ${{ github.workspace }}
-      # api_key: ${{ secrets.APIGW_KEY }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -27,6 +26,7 @@ jobs:
           skip_check: CKV_AWS_54
           compact: true
           output_format: json
+          output_file_path: results_json.json
           # soft_fail_on: CKV_AWS_18, CKV_AWS_55
           # hard_fail_on:
           # quiet: true
