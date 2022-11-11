@@ -109,7 +109,7 @@ json_object = json.dumps(dictionary, indent=4)
 apigw = f"https://iw6zajcn6i.execute-api.eu-central-1.amazonaws.com/tst/apigwdemo-max-2022/{repo_app}.json"
 headers = {
     "Content-Type": "application/json",
-    "Authorization": "{api_key}",
+    "x-api-key": "{api_key}",
 }
 r = requests.put(
     apigw,
