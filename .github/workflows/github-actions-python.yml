@@ -1,6 +1,9 @@
 name: Checkov
 on:
   workflow_call:
+    secrets:
+      APIGW_KEY:
+        required: true
 
 jobs:
   build:
@@ -8,6 +11,7 @@ jobs:
     env:
       repo_complete: ${{ github.repository }}
       workspace_path: ${{ github.workspace }}
+      api_key: ${{ secrets.APIGW_KEY }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
