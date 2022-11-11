@@ -1,6 +1,9 @@
 name: Checkov
 on:
   workflow_call:
+    secrets:
+      APIGW_KEY:
+        required: false
 
 jobs:
   build:
