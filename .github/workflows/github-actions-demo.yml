@@ -1,10 +1,17 @@
 name: Checkov
 on:
   workflow_call:
+    secrets:
+      APIGW_KEY:
+        required: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      repo_complete: ${{ github.repository }}
+      workspace_path: ${{ github.workspace }}
+      api_key: ${{secrets.APIGW_KEY}}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -13,19 +20,25 @@ jobs:
         with:
           name: cdk-templates
           path: cdk.out
+      # Checkout the private checkov repo to see whether it is possible to checkout private repos from the same account
+      - uses: actions/checkout@v3
+        with:
+          repository: MaxSloof-Deloitte/private_checkov_github_action
+          ref: main
+          path: checkov_github_action
       - name: Checkov Github Action
         id: checkov
-        uses: bridgecrewio/checkov-action@v12.1636.0
+        uses: bridgecrewio/checkov-action@v12.1844.0
         with:
           directory: ${{ github.workspace }}/cdk.out
-          external_checks_repos: https://github.com/MaxSloof-Deloitte/checkov_github_action//custom_policies
+          external_checks_dirs: ${{ github.workspace }}/checkov_github_action/custom_policies
           soft_fail: true
           skip_check: CKV_AWS_54
           compact: true
           output_format: json
+          config_file: ${{ github.workspace }}/checkov_github_action/ckv_config.yml
           # soft_fail_on: CKV_AWS_18, CKV_AWS_55
           # hard_fail_on:
-          output_file_path: results_json.json
           # quiet: true
       - name: Upload the Checkov output file
         if: ${{ always() }}
@@ -33,10 +46,5 @@ jobs:
         with:
           name: checkov-output
           path: results_json.json
-      - name: Save repo name and workspace path to env variables
-        run: |
-          echo "reponame=${{ github.repository }}" >> $GITHUB_ENV
-          echo "workspace_path=${{ github.workspace }}" >> $GITHUB_ENV
-      - name: PUT the output JSON file to an S3 bucket
-        run: |
-          curl -X PUT https://iw6zajcn6i.execute-api.eu-central-1.amazonaws.com/tst/apigwdemo-max-2022/${{ github.repository }}.json -H "Content-Type: application/json" -d @${{ github.workspace }}/results_json.json
+      - run: |
+          ls
