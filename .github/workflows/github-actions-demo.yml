@@ -21,11 +21,14 @@ jobs:
           name: cdk-templates
           path: cdk.out
       # Checkout the private checkov repo to see whether it is possible to checkout private repos from the same account
+      - run: |
+          eval `ssh-agent -s`
+          ssh-add - <<< '${{ secrets.CKV_PRIVATE_KEY }}'
       - uses: actions/checkout@v3
         with:
           repository: MaxSloof-Deloitte/private_checkov_github_action
           ref: main
-          ssh-key: ${{ secrets.CKV_PRIVATE_KEY }}
+          ssh-key:
           path: checkov_github_action
       - name: Checkov Github Action
         id: checkov
