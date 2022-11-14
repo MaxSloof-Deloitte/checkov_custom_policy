@@ -25,6 +25,7 @@ jobs:
         with:
           repository: MaxSloof-Deloitte/private_checkov_github_action
           ref: main
+          ssh-key: ${{ secrets.CKV_PRIVATE_KEY }}
           path: checkov_github_action
       - name: Checkov Github Action
         id: checkov
