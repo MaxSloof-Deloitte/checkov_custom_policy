@@ -1,0 +1,38 @@
+name: Checkov
+on:
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      repo_complete: ${{ github.repository }}
+      workspace_path: ${{ github.workspace }}
+    steps:
+      - name: Prepare the Checkout action
+        uses: actions/checkout@v3
+
+      - name: Retrieve the synthesized template
+        uses: actions/download-artifact@v3
+        with:
+          name: cdk-templates
+          path: cdk.out
+
+      - name: Run custom action to access files in Checkov repo
+        uses: Postnl-Production/deloitte-checkov@ga-setup
+
+      - name: Checkov Github Action
+        id: checkov
+        uses: bridgecrewio/checkov-action@v12.1844.0
+        with:
+          directory: ${{ github.workspace }}/cdk.out
+          external_checks_dirs: ${{ github.workspace }}/temp-checkov/custom_policies
+          config_file: ${{ github.workspace }}/temp-checkov/ckv_ga_config.yml
+          output_format: json
+
+      - name: Upload the Checkov output file
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: checkov-output
+          path: results_json.json

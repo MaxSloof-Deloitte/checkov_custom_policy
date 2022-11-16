@@ -1,0 +1,15 @@
+name: Access files in this repository
+description: This action is required to access the Checkov custom policies and config files in GitHub Actions without requiring an SSH key
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout repository content
+      uses: actions/checkout@v3
+
+    # Copy custom policies from the Checkov repo to the workspace directory without requiring access keys
+    - run: |
+        mkdir temp-checkov
+        cp -R ${{ github.action_path }}/custom_policies ${{ github.workspace }}/temp-checkov
+        cp ${{ github.action_path }}/ckv_ga_config.yml ${{ github.workspace }}/temp-checkov
+      shell: bash

@@ -1,0 +1,4 @@
+output: json
+output-file-path: ./
+soft-fail: false
+compact: true
