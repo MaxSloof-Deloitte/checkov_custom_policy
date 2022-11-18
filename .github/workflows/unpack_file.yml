@@ -17,5 +17,5 @@ jobs:
       - run: ls
       - name: Unpack tar file
         run: |
-          tar -xzf placeholder.tar.gz
+          tar -xzf placeholder.tar
       - run: ls
