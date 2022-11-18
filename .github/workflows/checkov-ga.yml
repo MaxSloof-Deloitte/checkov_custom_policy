@@ -15,8 +15,11 @@ jobs:
       - name: Retrieve the synthesized template
         uses: actions/download-artifact@v3
         with:
-          name: cdk-templates
-          path: cdk.out
+          name: placeholder
+          path: ./
+      - name: Unpack tar file
+        run: |
+          tar -xzf placeholder.tar
 
       - name: Run custom action to access files in Checkov repo
         uses: Postnl-Production/deloitte-checkov@ga-setup
