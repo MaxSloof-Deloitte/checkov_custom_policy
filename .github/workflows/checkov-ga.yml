@@ -22,7 +22,7 @@ jobs:
           tar -xzf placeholder.tar
 
       - name: Run custom action to access files in Checkov repo
-        uses: Postnl-Production/deloitte-checkov@ga-setup
+        uses: MaxSloof-Deloitte/checkov_github_action@tar-unpack
 
       - name: Checkov Github Action
         id: checkov
