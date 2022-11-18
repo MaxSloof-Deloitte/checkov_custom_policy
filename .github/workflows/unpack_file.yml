@@ -13,7 +13,8 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: placeholder
-          path: placeholder
+          path: ./
+      - run: ls
       - name: Unpack tar file
         run: |
           tar -xzf placeholder.tar.gz
