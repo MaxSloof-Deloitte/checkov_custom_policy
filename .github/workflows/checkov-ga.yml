@@ -34,7 +34,7 @@ jobs:
           directory: ${{ github.workspace }}/cdk.out
           #   external_checks_dirs: ${{ github.workspace }}/temp-checkov/custom_policies
           #   config_file: ${{ github.workspace }}/temp-checkov/ckv_ga_config.yml
-          output_format: json
+          # output_format: json
 
       - name: Upload the Checkov output file
         if: ${{ always() }}
