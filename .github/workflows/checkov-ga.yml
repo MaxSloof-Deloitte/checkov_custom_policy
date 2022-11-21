@@ -16,11 +16,14 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: placeholder
-          path: ./
+          path: artifact
       - name: Unpack tar file
         run: |
-          tar -xzf placeholder.tar
-
+          tar -xzf artifact/placeholder.tar
+      - run: |
+          ls 
+          cd artifact
+          ls
       - name: Run custom action to access files in Checkov repo
         uses: MaxSloof-Deloitte/checkov_github_action@main
 
