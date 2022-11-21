@@ -19,7 +19,7 @@ jobs:
           path: artifact
       - name: Unpack tar file
         run: |
-          cd artifact && tar -xzf placeholder.tar
+          tar -xzf artifact/placeholder.tar
       - run: |
           ls
       - run: |
@@ -31,7 +31,7 @@ jobs:
         id: checkov
         uses: bridgecrewio/checkov-action@v12.1844.0
         with:
-          directory: artifact/cdk.out
+          directory: cdk.out
           external_checks_dirs: ${{ github.workspace }}/temp-checkov/custom_policies
           config_file: ${{ github.workspace }}/temp-checkov/ckv_ga_config.yml
           # output_format: json
