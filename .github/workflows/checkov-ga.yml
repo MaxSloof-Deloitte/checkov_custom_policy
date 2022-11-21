@@ -12,6 +12,9 @@ jobs:
       - name: Prepare the Checkout action
         uses: actions/checkout@v3
 
+      - name: Run custom action to access files in Checkov repo
+        uses: MaxSloof-Deloitte/checkov_github_action@tar-unpack
+
       - name: Retrieve the synthesized template
         uses: actions/download-artifact@v3
         with:
@@ -20,8 +23,6 @@ jobs:
       - name: Unpack tar file
         run: |
           tar -xzf artifact/placeholder.tar
-      - name: Run custom action to access files in Checkov repo
-        uses: MaxSloof-Deloitte/checkov_github_action@tar-unpack
       - run: |
           ls
       - run: |
